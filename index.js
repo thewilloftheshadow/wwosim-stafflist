@@ -52,17 +52,17 @@ client.on("message", async (message) => {
   if(command === "update"){
     let chan = client.guilds.cache.get(config.guild).channels.cache.get(config.channel), mid = db.get("message")
     let msg = await chan.messages.fetch(mid)
-    let m = `**Managers**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.manager))}\n`
-    m += `**Bot Developers**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.botdev))}\n`
-    m += `**Mega Moderators**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.megamod))}\n`
+    let m = `**Managers**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.manager)).map(x => `<@${x.id}> - ${x.tag}`)}\n`
+    m += `**Bot Developers**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.botdev)).map(x => `<@${x.id}> - ${x.tag}`)}\n`
+    m += `**Mega Moderators**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.megamod)).map(x => `<@${x.id}> - ${x.tag}`)}\n`
     if(m.length > 1000) {m1 = m; m = ""}
-    m += `**Moderators**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.mod))}\n`
-    m += `**Mini Moderators**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.minimid))}\n`
-    m += `**Helpers**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.helper))}\n`
+    m += `**Moderators**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.mod)).map(x => `<@${x.id}> - ${x.tag}`)}\n`
+    m += `**Mini Moderators**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.minimid)).map(x => `<@${x.id}> - ${x.tag}`)}\n`
+    m += `**Helpers**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.helper)).map(x => `<@${x.id}> - ${x.tag}`)}\n`
     if(m.length > 1000) {m2 = m; m = ""}
-    m += `\n**Game Narrators**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.narr))}\n`
-    m += `**Mini Narrators**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.mininarr))}\n`
-    m += `\n\n**AFK Staff/Content**\nThis includes less active staff members.\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.afk))}\n`
+    m += `\n**Game Narrators**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.narr)).map(x => `<@${x.id}> - ${x.tag}`)}\n`
+    m += `**Mini Narrators**\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.mininarr)).map(x => `<@${x.id}> - ${x.tag}`)}\n`
+    m += `\n\n**AFK Staff/Content**\nThis includes less active staff members.\n${message.guild.members.cache.find(x => x.roles.cache.has(config.roles.afk)).map(x => `<@${x.id}> - ${x.tag}`)}\n`
     if(!msg) {
       msg = await chan.send("Generating staff list...")
       db.set("message", msg.id)
