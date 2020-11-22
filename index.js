@@ -11,6 +11,7 @@ client.once("ready", () => {
     `${client.user.username} is online in ${client.guilds.cache.size} guilds`
   )
   client.user.setPresence({
+    activity: { name: 'and destroying Shadow in pinball', type: "PLAYING"},
     status: "idle",
   })
   client.guilds.cache.forEach((x) =>
@@ -22,8 +23,6 @@ client.on("messageUpdate", (oldmsg, newmsg) => {
   newmsg.thisisedit = true
   if (oldmsg.content != newmsg.content) client.emit("message", newmsg)
 })
-
-
 
 client.on("message", async (message) => {
   if (message.author.bot) return
@@ -40,7 +39,7 @@ client.on("message", async (message) => {
     let embed = new Discord.MessageEmbed()
       .setTitle(`Pong!`)
       .setThumbnail(
-        client.user.avatarURL({ format: "png", dynamic: true, size: 1024 })
+        message.guild.logoURL({ format: "png", dynamic: true, size: 1024 })
       )
       .addField("Bot Latency", `${botLatency}ms`, true)
       .addField("Ping", `${Math.round(ping)}ms`, true)
