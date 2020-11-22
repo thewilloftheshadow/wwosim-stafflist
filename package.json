@@ -1,16 +1,15 @@
 {
-  "name": "tpsgaming",
-  "version": "1.0.0",
-  "description": "",
+  "name": "wwosim-stafflist",
+  "version": "0.1.0",
+  "description": "Staff List bot for the Werewolf Online simulation server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
-  "author": "",
+  "author": "Shadow",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.3.3",
-    "discord-music-player": "^5.0.4",
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "prettier": "^2.1.2",
